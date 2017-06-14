@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='container'>
+
+    </div>
+</body>
+<script src="https://cdn.rawgit.com/konvajs/konva/1.6.3/konva.min.js"></script>
+<script>
+    var stage = new Konva.Stage({
+        container: 'container',
+        width: window.innerWidth,
+        height: window.innerHeight
+    });
+    var layer = new Konva.Layer();
+    var text = new Konva.Text({
+        x: stage.getWidth() / 2 - 25,
+        y: stage.getHeight() / 2,
+        text: 'WEB',
+        fontSize: 20,
+        fontFamily: 'Calibri',
+        fill: 'green',
+        width: 50,
+        height: 20,
+        align: 'center',
+    });
+    var text2 = new Konva.Text({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        text: 'CSS',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        fill: 'black',
+        width: 30,
+        height: 20,
+        align: 'center',
+        offset: {
+            x: -35,
+            y: 310
+        }
+    });
+    var text3 = new Konva.Text({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        text: 'JS',
+        fontSize: 16,
+        fontFamily: 'Calibri',
+        fill: 'black',
+        width: 30,
+        height: 20,
+        align: 'center',
+        offset: {
+            x: -35,
+            y: 210
+        }
+    });
+    var white2 = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 300,
+        fill: 'white',
+        stroke: '#ccc',
+        dash: [33, 10]
+    });
+    var white = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 200,
+        fill: 'white',
+        stroke: '#ccc',
+        dash: [33, 10]
+
+    });
+    var yellow = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 50,
+        fill: 'yellow',
+
+    });
+    var red = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 30,
+        fill: 'red',
+        stroke: 'black',
+        offset: {
+            x: -50,
+            y: 200
+        }
+    });
+    var blue = new Konva.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2,
+        radius: 30,
+        fill: 'blue',
+        stroke: 'black',
+        // innerRadius: 30, //内环的半径
+        // outerRadius: 40,
+        // innerStyle: 'orange',
+        // outerStyle: '#E1E1E1',
+        // text: 'CSS3',
+        offset: {
+            x: -50,
+            y: 300
+        }
+    });
+
+    layer.add(white2);
+    layer.add(white);
+    layer.add(yellow);
+    layer.add(red);
+    layer.add(blue);
+    layer.add(text);
+    layer.add(text2);
+    layer.add(text3);
+    stage.add(layer);
+
+    var angularSpeed = 90;
+    var anim = new Konva.Animation(function(frame) {
+        var angleDiff = frame.timeDiff * angularSpeed / 1000;
+        red.rotate(angleDiff);
+        text3.rotate(angleDiff);
+        blue.rotate(-(angleDiff / 2));
+        text2.rotate(-(angleDiff / 2));
+    }, layer);
+    anim.start();
+</script>
+
+</html>
